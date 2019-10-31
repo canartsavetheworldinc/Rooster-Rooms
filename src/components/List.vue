@@ -1,22 +1,20 @@
 <template>
   <table>
-    <ListRow :row="headerRow" :isHeader="true" />
-    <ListRow v-for="(row, i) in list" :key="i" :row="row" />
+    <draggable v-model="list" draggable=".list-row" @start="drag=true" @end="drag=false">
+      <ListRow slot="header" :row="headerRow" :isHeader="true" />
+      <ListRow v-for="(row, i) in list" :key="i" :row="row" class="list-row" />
+    </draggable>
   </table>
 </template>
 
 <script>
 import ListRow from './ListRow'
+import draggable from 'vuedraggable'
 
 export default {
-  props: {
-    list: {
-      type: Array,
-      required: true
-    }
-  },
   components: {
-    ListRow
+    ListRow,
+    draggable
   },
   computed: {
     headerRow() {
@@ -24,8 +22,15 @@ export default {
       for(const column of this.$store.getters.getColumns) {
         ret[column.name] = column.name
       }
-      console.log(ret)
       return ret
+    },
+    list: {
+      get() {
+        return this.$store.state.list
+      },
+      set(value) {
+        this.$store.dispatch('rearrangeList', value)
+      }
     }
   }
 }
