@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <table>
+    <ListRow :row="headerRow" :isHeader="true" />
     <ListRow v-for="(row, i) in list" :key="i" :row="row" />
-  </div>
+  </table>
 </template>
 
 <script>
@@ -16,9 +17,23 @@ export default {
   },
   components: {
     ListRow
+  },
+  computed: {
+    headerRow() {
+      const ret = {}
+      for(const column of this.$store.getters.getColumns) {
+        ret[column.name] = column.name
+      }
+      console.log(ret)
+      return ret
+    }
   }
 }
 </script>
 
 <style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 </style>
