@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 table {
   border-collapse: collapse;
   border-spacing: 0;

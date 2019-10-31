@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 tr.header {
   background-color: whitesmoke;
   font-weight: bold;
