@@ -20,7 +20,7 @@ export default {
     headerRow() {
       const ret = {}
       for(const column of this.$store.getters.getColumns) {
-        ret[column.name] = column.name
+        ret[column.id] = column.name
       }
       return ret
     },

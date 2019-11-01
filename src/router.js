@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import NotFound from './pages/NotFound'
 import Top from './pages/Top'
 import Introduction from './pages/Introduction'
+import Condition from './pages/Condition'
 import Edit from './pages/Edit'
 
 Vue.use(Router)
@@ -20,6 +21,10 @@ export default new Router({
       path: '/introduction',
       name: 'introduction',
       component: Introduction
+    }, {
+      path: '/condition',
+      name: 'condition',
+      component: Condition
     }, {
       path: '/edit/:data',
       name: 'edit',

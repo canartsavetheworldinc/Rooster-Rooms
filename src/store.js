@@ -6,13 +6,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     columns: [
-      {
-        type: String,
-        name: "name"
-      }, {
-        type: Number,
-        name: "rent"
-      }
+      { type: String, id: "name", name: "名前", enabled: true },
+      { type: String, id: "ward", name: "市区町村", enabled: false },
+      { type: String, id: "line", name: "路線", enabled: false },
+      { type: String, id: "station", name: "最寄駅", enabled: false },
+      { type: Number, id: "time", name: "駅徒歩", enabled: false },
+      { type: Number, id: "old", name: "築年数", enabled: false },
+      { type: Number, id: "floor", name: "階数", enabled: false },
+      { type: String, id: "layout", name: "間取り", enabled: false },
+      { type: Number, id: "size", name: "広さ", enabled: false },
+      { type: Number, id: "rent", name: "家賃", enabled: false },
+      { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
+      { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
+      { type: Boolean, id: "unitbath", name: "風呂トイレ別", enabled: false },
+      { type: String, id: "custom_1", name: "", enabled: false },
+      { type: String, id: "custom_2", name: "", enabled: false }
     ],
     list: [{
       id: 0,
@@ -76,6 +84,20 @@ export default new Vuex.Store({
     },
     setFormRegisterEvent(state, payload) {
       state.onFormRegister = payload
+    },
+    changeColumnAvailability(state, payload) {
+      for(const column of state.columns) {
+        if(column.id === payload.id && payload.enabled !== undefined) {
+          column.enabled = payload.enabled
+        }
+      }
+    },
+    changeCustomColumnName(state, payload) {
+      for(const column of state.columns) {
+        if(column.id === payload.id && payload.name !== undefined) {
+          column.name = payload.name
+        }
+      }
     }
   },
   actions: {
@@ -96,6 +118,12 @@ export default new Vuex.Store({
     },
     setFormRegisterEvent(context, payload) {
       context.commit("setFormRegisterEvent", payload)
+    },
+    changeColumnAvailability(context, payload) {
+      context.commit("changeColumnAvailability", payload)
+    },
+    changeCustomColumnName(context, payload) {
+      context.commit("changeCustomColumnName", payload)
     }
   }
 })

@@ -5,7 +5,7 @@
     <div>お部屋比較サイト</div>
     <div>気になるお部屋の情報をカンタンに比較できます</div>
     <div>
-      <router-link to="/edit">
+      <router-link to="/condition">
         <div>ただいま</div>
         <small>使い方は知っています</small>
       </router-link>

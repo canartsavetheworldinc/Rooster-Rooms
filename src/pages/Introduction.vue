@@ -1,7 +1,7 @@
 <template>
 	<div>
     <div>Introduction</div>
-    <router-link to="/edit">了解！</router-link>
+    <router-link to="/condition">了解！</router-link>
   </div>
 </template>
 
