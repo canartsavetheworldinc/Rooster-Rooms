@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     showAddListItemModal() {
+      this.$store.dispatch("clearForm")
       this.$store.dispatch("setFormRegisterEvent", this.addItem)
       this.$modal.show("edit-list-item")
     },
@@ -36,10 +37,9 @@ export default {
           id = row.id
         }
       }
-      this.$store.dispatch('addListItem', {
+      this.$store.dispatch("addListItem", {
         id: ++id,
-        name: this.formdata.name,
-        rent: this.formdata.rent
+        ...this.formdata
       })
       this.$store.dispatch("clearForm")
       this.$modal.hide("edit-list-item")

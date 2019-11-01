@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     columns() {
-      return this.$store.getters.getColumns
+      return this.$store.getters.getColumns.filter(col => col.id !== "name")
     }
   }
 }

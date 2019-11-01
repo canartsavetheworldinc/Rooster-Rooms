@@ -9,16 +9,16 @@ export default new Vuex.Store({
       { type: String, id: "name", name: "名前", enabled: true },
       { type: String, id: "ward", name: "市区町村", enabled: false },
       { type: String, id: "line", name: "路線", enabled: false },
-      { type: String, id: "station", name: "最寄駅", enabled: false },
+      { type: String, id: "station", name: "最寄駅", enabled: true },
       { type: Number, id: "time", name: "駅徒歩", enabled: false },
       { type: Number, id: "old", name: "築年数", enabled: false },
       { type: Number, id: "floor", name: "階数", enabled: false },
       { type: String, id: "layout", name: "間取り", enabled: false },
       { type: Number, id: "size", name: "広さ", enabled: false },
-      { type: Number, id: "rent", name: "家賃", enabled: false },
+      { type: Number, id: "rent", name: "家賃", enabled: true },
       { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
       { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
-      { type: Boolean, id: "unitbath", name: "風呂トイレ別", enabled: false },
+      { type: Boolean, id: "sepbath", name: "風呂トイレ別", enabled: true },
       { type: String, id: "custom_1", name: "", enabled: false },
       { type: String, id: "custom_2", name: "", enabled: false }
     ],
@@ -31,10 +31,7 @@ export default new Vuex.Store({
       name: "満月亭",
       rent: 12.0
     }],
-    formdata: {
-      name: "",
-      rent: 0
-    },
+    formdata: {},
     onFormRegister() {}
   },
   getters: {
@@ -60,18 +57,21 @@ export default new Vuex.Store({
         console.error("item.id is not defined.")
         return
       }
-      const item = state.list.find(item => item.id === payload.id)
+      const itemIndex = state.list.findIndex(item => item.id === payload.id)
+      const item = { ...state.list[itemIndex] }
       for(const column of state.columns) {
-        if(item[column.name] === undefined || payload[column.name] === undefined) {
+        if(payload[column.id] === undefined) {
           continue
         }
-        item[column.name] = payload[column.name]
+        item[column.id] = payload[column.id]
       }
+      state.list.splice(itemIndex, 1, item)
     },
     rearrangeList(state, payload) {
       state.list = payload
     },
     setFormdata(state, payload) {
+      state.formdata = { ...state.formdata }
       for(const key in payload) {
         if(state.formdata[key] !== undefined) {
           state.formdata[key] = payload[key]
@@ -79,8 +79,24 @@ export default new Vuex.Store({
       }
     },
     clearForm(state) {
-      state.formdata.name = ""
-      state.formdata.rent = 0
+      state.formdata = {}
+      for(const column of state.columns) {
+        let initValue
+        switch(column.type) {
+          case String:
+            initValue = ""
+            break
+          case Number:
+            initValue = 0
+            break
+          case Boolean:
+            initValue = false
+            break
+          default:
+            initValue = null
+        }
+        state.formdata[column.id] = initValue
+      }
     },
     setFormRegisterEvent(state, payload) {
       state.onFormRegister = payload

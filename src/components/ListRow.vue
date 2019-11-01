@@ -12,7 +12,7 @@
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'rent').enabled">{{ row.rent }}</td>
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'autolock').enabled">{{ row.autolock }}</td>
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'delibox').enabled">{{ row.delibox }}</td>
-    <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'unitbath').enabled">{{ row.unitbath }}</td>
+    <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'sepbath').enabled">{{ row.sepbath }}</td>
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'custom_1').enabled">{{ row.custom_1 }}</td>
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'custom_2').enabled">{{ row.custom_2 }}</td>
     <td>

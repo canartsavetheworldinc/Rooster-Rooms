@@ -16,12 +16,6 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      // enabled: false,
-      // customName: ""
-    }
-  },
   computed: {
     enabled: {
       get() {
