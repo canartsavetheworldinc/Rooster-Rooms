@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>edit</div>
     <div>{{ data }}</div>
     <List />
     <AddButton :clicked="showAddListItemModal">add item</AddButton>
