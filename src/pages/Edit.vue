@@ -4,15 +4,14 @@
     <div>{{ data }}</div>
     <List />
     <AddButton :clicked="showAddListItemModal">add item</AddButton>
-    <modal name="add-list-item">
-      <button @click="addItem()">ok!</button>
-    </modal>
+    <ListItemModal />
   </div>
 </template>
 
 <script>
 import List from '../components/List'
 import AddButton from '../components/AddButton'
+import ListItemModal from '../components/ListItemModal'
 
 export default {
   props: {
@@ -23,11 +22,13 @@ export default {
   },
   components: {
     List,
-    AddButton
+    AddButton,
+    ListItemModal
   },
   methods: {
     showAddListItemModal() {
-      this.$modal.show('add-list-item')
+      this.$store.dispatch("setFormRegisterEvent", this.addItem)
+      this.$modal.show("edit-list-item")
     },
     addItem() {
       let id = 0
@@ -36,12 +37,18 @@ export default {
           id = row.id
         }
       }
-      const dummy = {
+      this.$store.dispatch('addListItem', {
         id: ++id,
-        name: "hoge",
-        rent: 11
-      }
-      this.$store.dispatch('addListItem', dummy)
+        name: this.formdata.name,
+        rent: this.formdata.rent
+      })
+      this.$store.dispatch("clearForm")
+      this.$modal.hide("edit-list-item")
+    }
+  },
+  computed: {
+    formdata() {
+      return this.$store.getters.getFormdata
     }
   }
 }
