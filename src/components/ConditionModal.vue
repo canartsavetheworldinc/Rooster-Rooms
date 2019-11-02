@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<modal name="edit-condition">
     <div>
       <Item v-for="column in columns" :key="column.id" :column="column" />
     </div>
     <router-link to="/edit">完了！</router-link>
-	</div>
+	</modal>
 </template>
 
 <script>

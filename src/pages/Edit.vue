@@ -4,6 +4,7 @@
     <List />
     <AddButton :clicked="showAddListItemModal">add item</AddButton>
     <ListItemModal />
+    <ConditionModal />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import List from '../components/List'
 import AddButton from '../components/AddButton'
 import ListItemModal from '../components/ListItemModal'
+import ConditionModal from '../components/ConditionModal'
 
 export default {
   props: {
@@ -22,7 +24,8 @@ export default {
   components: {
     List,
     AddButton,
-    ListItemModal
+    ListItemModal,
+    ConditionModal
   },
   methods: {
     showAddListItemModal() {

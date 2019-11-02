@@ -17,7 +17,7 @@
     <td :class="{ header: isHeader }" v-if="columns.find(col => col.id === 'custom_2').enabled">{{ row.custom_2 }}</td>
     <td>
       <div v-if="isHeader">
-        <router-link to="/condition">edit</router-link>
+        <button @click="showConditionModal()">edit</button>
       </div>
       <div v-else>
         <button @click="edit()">edit</button>
@@ -53,6 +53,9 @@ export default {
       })
       this.$store.dispatch("clearForm")
       this.$modal.hide("edit-list-item")
+    },
+    showConditionModal() {
+      this.$modal.show("edit-condition")
     }
   },
   computed: {
