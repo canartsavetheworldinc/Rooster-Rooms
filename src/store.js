@@ -19,17 +19,26 @@ export default new Vuex.Store({
       { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
       { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
       { type: Boolean, id: "sepbath", name: "風呂トイレ別", enabled: true },
-      { type: String, id: "custom_1", name: "", enabled: false },
+      { type: String, id: "custom_1", name: "洗濯機置場", enabled: false },
       { type: String, id: "custom_2", name: "", enabled: false }
     ],
     list: [{
       id: 0,
-      name: "三日月ハイツ",
-      rent: 8.0
-    }, {
-      id: 1,
-      name: "満月亭",
-      rent: 12.0
+      name: "三日月亭",
+      ward: "足立区",
+      line: "千代田線",
+      station: "北千住",
+      time: 5,
+      old: 10,
+      floor: 7,
+      layout: "3LDK",
+      size: 32.5,
+      rent: 8,
+      autolock: true,
+      delibox: true,
+      sepbath: true,
+      custom_1: "外",
+      custom_2: ""
     }],
     formdata: {},
     onFormRegister() {}
