@@ -1,9 +1,9 @@
 <template>
-	<modal name="edit-condition">
+	<modal height="auto" name="edit-condition">
     <div>
       <Item v-for="column in columns" :key="column.id" :column="column" />
     </div>
-    <router-link to="/edit">完了！</router-link>
+    <button @click="done">完了！</button>
 	</modal>
 </template>
 
@@ -13,6 +13,11 @@ import Item from "./ConditionItem"
 export default {
   components: {
     Item
+  },
+  methods: {
+    done() {
+      this.$modal.hide("edit-condition")
+    }
   },
   computed: {
     columns() {
