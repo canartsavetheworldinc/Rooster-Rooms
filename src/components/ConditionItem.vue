@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<input type="checkbox" v-model="enabled" />
-    <span v-if="isCustom">
+    <span v-if="isCustom" class="items">
       <input type="text" v-model="customName">
     </span>
 		<span v-else>{{ column.name }}</span>
@@ -47,4 +47,7 @@ export default {
 </script>
 
 <style scoped>
+.items{
+  width: 200px;
+}
 </style>
