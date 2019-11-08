@@ -6,13 +6,15 @@
       <img alt="Vue logo" src="../assets/logo.png">
     </div>
     -->
+    <!-- <div class="left-corner">
+    </div>-->
 
     <div class="title-wrapper">
       <h1>Rooster Rooms</h1>
       <div class="subtitle">お部屋比較サイト</div>
     </div>
 
-    <div class="description">気になるお部屋の情報をカンタンに比較できます</div>
+    <div class="description"><p><span>気になるお部屋の情報を</span><span>カンタンに比較できます</span></p></div>
 
     <div class="selections-wrapper">
 
@@ -50,45 +52,60 @@ export default {
 
 <style scoped>
 
+/*.left-corner{
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 25%;
+  height: 60px;
+  z-index: -1;
+  background-color: #f08A37;
+}*/
+
+
 #main{
   margin: 0;
   width: 100vw;
-  height: auto;
+  height: 100%;
 }
 
 .title-wrapper{
   width: 80%;
   height: 30%;
-  margin: 15% 10% 0 10%;
+  margin: 5% 10% 0 10%;
 }
 
 .title-wrapper h1{
   margin: 0 auto;
-  font-size: 100px;
+  font-size: 10vw;
 }
 
 .subtitle{
-  font-size: 28px;
+  font-size: 3vw;
 }
 
 .description{
   width: 80%;
-  margin: 5% 10% 5% 10%;
+  margin: 1% 10% 5% 10%;
 }
 
 .selections-wrapper{
   width:80%;
   height: auto;
-  margin: 0% 10% 0 10%;
+  margin: 0% 10% 7% 10%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #selection{
-  width: 300px;
+  width: 28vw;
   height: 20%;
   border: solid;
+  border-color: #0DB8D9;
+  background-color: #0DB8D9;
+  color: black;
 }
 
 .selection1{
@@ -100,11 +117,11 @@ export default {
 }
 
 .largetext{
-  font-size: 40px;
+  font-size: 4vw;
 }
 
 .smalltext{
-  font-size: 14px;
+  font-size: 1.8vw;
 }
 
 .link{
