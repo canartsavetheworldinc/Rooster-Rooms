@@ -72,21 +72,22 @@ export default {
 .title-wrapper{
   width: 80%;
   height: 30%;
-  margin: 5% 10% 0 10%;
+  margin: 10% 10% 0 10%;
 }
 
 .title-wrapper h1{
   margin: 0 auto;
-  font-size: 10vw;
+  font-size: calc(3.4rem + ((2vw - 0.64rem) * 2.1429));
 }
 
 .subtitle{
-  font-size: 3vw;
+  font-size: calc(2rem + ((1vw - 0.64rem) * 2.1429));
 }
 
 .description{
   width: 80%;
   margin: 1% 10% 5% 10%;
+  font-size: calc(1.4rem + ((0.5vw - 0.64rem) * 2.1429));
 }
 
 .selections-wrapper{
@@ -117,11 +118,11 @@ export default {
 }
 
 .largetext{
-  font-size: 4vw;
+    font-size: calc(2rem + ((1vw - 0.64rem) * 2.1429));
 }
 
 .smalltext{
-  font-size: 1.8vw;
+  font-size: calc(1.4rem + ((0.5vw - 0.64rem) * 2.1429));
 }
 
 .link{
