@@ -20,7 +20,7 @@
 
       <router-link to="/edit" class="link selection1">
 
-        <div id="selection">
+        <div id="selection" class>
           <p>
             <span class="largetext">ただいま</span><br>
             <span class="smalltext">使い方は知っています</span>
@@ -104,17 +104,27 @@ export default {
   width: 28vw;
   height: 20%;
   border: solid;
-  border-color: #0DB8D9;
-  background-color: #0DB8D9;
   color: black;
 }
 
 .selection1{
   margin-right: 5%;
+  background-color: #d56950;
+}
+
+:hover.selection1{
+  transition: 500ms;
+  transform: rotate(2deg);
 }
 
 .selection2{
   margin-left: 5%;
+  background-color: #89A3D3;
+}
+
+:hover.selection2{
+  transition: 500ms;
+  transform: rotate(2deg);
 }
 
 .largetext{
