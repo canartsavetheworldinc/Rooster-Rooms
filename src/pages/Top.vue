@@ -1,13 +1,5 @@
 <template>
   <div id="main">
-  
-    <!--
-    <div class="image-wrapper">
-      <img alt="Vue logo" src="../assets/logo.png">
-    </div>
-    -->
-    <!-- <div class="left-corner">
-    </div>-->
 
     <div class="title-wrapper">
       <h1>Rooster Rooms</h1>
@@ -26,6 +18,7 @@
             <span class="smalltext">使い方は知っています</span>
           </p>
         </div>
+
 
       </router-link>
 
@@ -52,17 +45,6 @@ export default {
 
 <style scoped>
 
-/*.left-corner{
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  width: 25%;
-  height: 60px;
-  z-index: -1;
-  background-color: #f08A37;
-}*/
-
-
 #main{
   margin: 0;
   width: 100vw;
@@ -78,16 +60,19 @@ export default {
 .title-wrapper h1{
   margin: 0 auto;
   font-size: calc(3.4rem + ((2vw - 0.64rem) * 2.1429));
+  color: #f1f8f7;
 }
 
 .subtitle{
   font-size: calc(2rem + ((1vw - 0.64rem) * 2.1429));
+  color: #265782;
 }
 
 .description{
   width: 80%;
   margin: 1% 10% 5% 10%;
   font-size: calc(1.4rem + ((0.5vw - 0.64rem) * 2.1429));
+  color: #265782;
 }
 
 .selections-wrapper{
@@ -100,13 +85,25 @@ export default {
   flex-wrap: wrap;
 }
 
+.popup{
+  z-index: -1;
+  position: absolute;
+}
+
 #selection{
   width: 28vw;
   height: 20%;
   border: solid;
-  border-color: #0DB8D9;
-  background-color: #0DB8D9;
-  color: black;
+  border-color: #fdde83;
+  background-color: #fdde83;
+  color: #7d7f7f;
+  z-index: 0;
+  position: relative;
+}
+
+:hover#selection{
+  transition: 0.5s;
+  transform: rotate(2.5deg);
 }
 
 .selection1{
