@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>{{ data }}</div>
+    <div class="list-wrapper">
     <List />
+    </div>
     <AddButton :clicked="showAddListItemModal">add item</AddButton>
     <ListItemModal />
     <ConditionModal />
@@ -57,4 +59,12 @@ export default {
 </script>
 
 <style scoped>
+
+.list-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 0 0 0 5vw;
+}
+
 </style>

@@ -71,7 +71,14 @@ tr.header {
   background-color: whitesmoke;
   font-weight: bold;
 }
+
 td {
   border: 1px solid gray;
+  padding: 8px 1vw 8px 1vw;
 }
+
+tr.list-row {
+  background-color: #fdde83;
+}
+
 </style>

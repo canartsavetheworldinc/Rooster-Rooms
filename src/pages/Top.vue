@@ -94,25 +94,23 @@ export default {
   width: 28vw;
   height: 20%;
   border: solid;
-<<<<<<< HEAD
   border-color: #fdde83;
   background-color: #fdde83;
   color: #7d7f7f;
   z-index: 0;
   position: relative;
+  transition: 0.6s;
 }
 
 :hover#selection{
   transition: 0.5s;
   transform: rotate(2.5deg);
-=======
-  color: black;
->>>>>>> e79b4527854939d5718102e067d90f97916ca29e
 }
 
 .selection1{
   margin-right: 5%;
   background-color: #d56950;
+  transition: 0.3s;
 }
 
 :hover.selection1{
@@ -122,7 +120,8 @@ export default {
 
 .selection2{
   margin-left: 5%;
-  background-color: #89A3D3;
+  background-color: #d56950;
+  transition: 0.3s;
 }
 
 :hover.selection2{

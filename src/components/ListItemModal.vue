@@ -1,5 +1,6 @@
 <template>
 	<modal name="edit-list-item">
+    <div class="modal-list-item">
     <ListItemInput conditionId="name" />
     <ListItemInput conditionId="ward" />
     <ListItemInput conditionId="line" />
@@ -15,6 +16,7 @@
     <ListItemInput conditionId="sepbath" />
     <ListItemInput conditionId="custom_1" />
     <ListItemInput conditionId="custom_2" />
+    </div>
     <button @click="onRegister()">ok!</button>
   </modal>
 </template>
@@ -46,4 +48,12 @@ export default {
 </script>
 
 <style scoped>
+.modal-list-item{
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
 </style>
