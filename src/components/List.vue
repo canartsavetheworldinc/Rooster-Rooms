@@ -38,6 +38,8 @@ export default {
 
 <style scoped>
 table {
+  width: auto;
+  height: 100px;
   border-collapse: collapse;
   border-spacing: 0;
 }
