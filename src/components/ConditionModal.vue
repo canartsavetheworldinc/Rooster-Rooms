@@ -1,9 +1,9 @@
 <template>
-	<modal height="auto" name="edit-condition">
-    <div>
+	<modal :adaptive="true" width="95%" :max-width="780" height="auto" name="edit-condition">
+    <div class="modal-condition">
       <Item v-for="column in columns" :key="column.id" :column="column" />
     </div>
-    <button @click="done">完了！</button>
+    <button class="button" @click="done">完了！</button>
 	</modal>
 </template>
 
@@ -28,4 +28,21 @@ export default {
 </script>
 
 <style scoped>
+.modal-condition{
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  width: 80px;
+}
 </style>

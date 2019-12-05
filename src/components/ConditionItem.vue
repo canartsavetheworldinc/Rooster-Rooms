@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<div class="conditionItems">
 		<input type="checkbox" v-model="enabled" />
     <span v-if="isCustom">
-      <input type="text" v-model="customName">
+      <input class="custom" type="text" v-model="customName">
     </span>
-		<span v-else>{{ column.name }}</span>
+		<span class="column" v-else>{{ column.name }}</span>
 	</div>
 </template>
 
@@ -47,4 +47,18 @@ export default {
 </script>
 
 <style scoped>
+
+.conditionItems{
+  width: 30%;
+  margin: 1.5% 1.5% 1% 1.5%;
+}
+
+.conditionItems .column{
+    font-size: calc(1rem + ((0.4vw - 0.54rem)));
+}
+
+.conditionItems .custom{
+  width: 70%;
+}
+
 </style>
