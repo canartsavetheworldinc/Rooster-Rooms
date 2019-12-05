@@ -3,43 +3,48 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const defaultState = {
+  columns: [
+    { type: String, id: "name", name: "名前", enabled: true },
+    { type: String, id: "ward", name: "市区町村", enabled: false },
+    { type: String, id: "line", name: "路線", enabled: false },
+    { type: String, id: "station", name: "最寄駅", enabled: true },
+    { type: Number, id: "time", name: "駅徒歩", enabled: false },
+    { type: Number, id: "old", name: "築年数", enabled: false },
+    { type: Number, id: "floor", name: "階数", enabled: false },
+    { type: String, id: "layout", name: "間取り", enabled: false },
+    { type: Number, id: "size", name: "広さ", enabled: false },
+    { type: Number, id: "rent", name: "家賃", enabled: true },
+    { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
+    { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
+    { type: Boolean, id: "sepbath", name: "風呂トイレ別", enabled: true },
+    { type: String, id: "custom_1", name: "洗濯機置場", enabled: false },
+    { type: String, id: "custom_2", name: "", enabled: false }
+  ],
+  list: [{
+    id: 0,
+    name: "三日月亭",
+    ward: "足立区",
+    line: "千代田線",
+    station: "北千住",
+    time: 5,
+    old: 10,
+    floor: 7,
+    layout: "3LDK",
+    size: 32.5,
+    rent: 8,
+    autolock: true,
+    delibox: true,
+    sepbath: true,
+    custom_1: "外",
+    custom_2: ""
+  }]
+}
+
 export default new Vuex.Store({
   state: {
-    columns: [
-      { type: String, id: "name", name: "名前", enabled: true },
-      { type: String, id: "ward", name: "市区町村", enabled: false },
-      { type: String, id: "line", name: "路線", enabled: false },
-      { type: String, id: "station", name: "最寄駅", enabled: true },
-      { type: Number, id: "time", name: "駅徒歩", enabled: false },
-      { type: Number, id: "old", name: "築年数", enabled: false },
-      { type: Number, id: "floor", name: "階数", enabled: false },
-      { type: String, id: "layout", name: "間取り", enabled: false },
-      { type: Number, id: "size", name: "広さ", enabled: false },
-      { type: Number, id: "rent", name: "家賃", enabled: true },
-      { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
-      { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
-      { type: Boolean, id: "sepbath", name: "風呂トイレ別", enabled: true },
-      { type: String, id: "custom_1", name: "洗濯機置場", enabled: false },
-      { type: String, id: "custom_2", name: "", enabled: false }
-    ],
-    list: [{
-      id: 0,
-      name: "三日月亭",
-      ward: "足立区",
-      line: "千代田線",
-      station: "北千住",
-      time: 5,
-      old: 10,
-      floor: 7,
-      layout: "3LDK",
-      size: 32.5,
-      rent: 8,
-      autolock: true,
-      delibox: true,
-      sepbath: true,
-      custom_1: "外",
-      custom_2: ""
-    }],
+    columns: [],
+    list: [],
     formdata: {},
     onFormRegister() {}
   },
@@ -58,8 +63,13 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    init(state, payload) {
+      state.columns = payload.columns
+      state.list = payload.list
+    },
     addListItem(state, payload) {
       state.list.push(payload)
+      localStorage.setItem("list", JSON.stringify(state.list))
     },
     updateListItem(state, payload) {
       if(payload.id === undefined) {
@@ -75,9 +85,11 @@ export default new Vuex.Store({
         item[column.id] = payload[column.id]
       }
       state.list.splice(itemIndex, 1, item)
+      localStorage.setItem("list", JSON.stringify(state.list))
     },
     rearrangeList(state, payload) {
       state.list = payload
+      localStorage.setItem("list", JSON.stringify(state.list))
     },
     setFormdata(state, payload) {
       state.formdata = { ...state.formdata }
@@ -116,6 +128,7 @@ export default new Vuex.Store({
           column.enabled = payload.enabled
         }
       }
+      localStorage.setItem("columns", JSON.stringify(state.columns))
     },
     changeCustomColumnName(state, payload) {
       for(const column of state.columns) {
@@ -123,9 +136,19 @@ export default new Vuex.Store({
           column.name = payload.name
         }
       }
+      localStorage.setItem("columns", JSON.stringify(state.columns))
     }
   },
   actions: {
+    init(context) {
+      const list = JSON.parse(localStorage.getItem("list"))
+      const columns = JSON.parse(localStorage.getItem("columns"))
+      // console.log(list, columns)
+      context.commit("init", {
+        list: list !== null ? list : defaultState.list,
+        columns: columns !== null ? columns : defaultState.columns
+      })
+    },
     addListItem(context, payload) {
       context.commit("addListItem", payload)
     },
