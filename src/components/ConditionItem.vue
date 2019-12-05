@@ -1,8 +1,13 @@
 <template>
 	<div class="conditionItems">
 		<input type="checkbox" v-model="enabled" />
+<<<<<<< HEAD
     <span v-if="isCustom">
       <input class="custom" type="text" v-model="customName">
+=======
+    <span v-if="isCustom" class="items">
+      <input type="text" v-model="customName">
+>>>>>>> 842f5ff133267ada043736d351aa882286b71703
     </span>
 		<span class="column" v-else>{{ column.name }}</span>
 	</div>
@@ -47,6 +52,7 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 
 .conditionItems{
   width: 30%;
@@ -61,4 +67,9 @@ export default {
   width: 70%;
 }
 
+=======
+.items{
+  width: 200px;
+}
+>>>>>>> 842f5ff133267ada043736d351aa882286b71703
 </style>
