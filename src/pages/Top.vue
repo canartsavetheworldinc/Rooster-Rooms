@@ -19,7 +19,6 @@
           </p>
         </div>
 
-
       </router-link>
 
       <router-link to="/introduction" class="link selection2">
@@ -105,12 +104,6 @@ export default {
 :hover#selection{
   transition: 0.5s;
   transform: rotate(2.5deg);
-<<<<<<< HEAD
-=======
-  color: black;
->>>>>>> css追加し始めます
-=======
->>>>>>> 使えるようになりました
 }
 
 .selection1{

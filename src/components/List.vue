@@ -1,7 +1,7 @@
 <template>
   <table>
     <draggable v-model="list" draggable=".list-row" @start="drag=true" @end="drag=false">
-      <ListRow slot="header" :row="headerRow" :isHeader="true" />
+      <ListRow class="header" slot="header" :row="headerRow" :isHeader="true" />
       <ListRow v-for="(row, i) in list" :key="i" :row="row" class="list-row" />
     </draggable>
   </table>
@@ -37,10 +37,17 @@ export default {
 </script>
 
 <style scoped>
+
+.header{
+  color: rgb(80, 80, 80);
+}
+
 table {
-  width: auto;
+  margin: 0 auto;
   height: 100px;
+  min-height: 100px;
   border-collapse: collapse;
   border-spacing: 0;
+  overflow: scroll;
 }
 </style>

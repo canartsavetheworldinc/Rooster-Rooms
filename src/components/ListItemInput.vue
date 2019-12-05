@@ -56,4 +56,16 @@ export default {
 </script>
 
 <style scoped>
+
+.listitems span{
+  width: 0%;
+  margin: 0;
+  font-size: calc(1rem + ((0.4vw - 0.54rem)));
+}
+
+.listitems input:not([type="checkbox"]){
+  width: 60%;
+  margin: 0;
+}
+
 </style>

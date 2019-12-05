@@ -2,9 +2,9 @@
   <div>
     <div>{{ data }}</div>
     <div class="list-wrapper">
-    <List />
+      <List />
     </div>
-    <AddButton :clicked="showAddListItemModal">add item</AddButton>
+    <AddButton :clicked="showAddListItemModal">お部屋を追加する</AddButton>
     <ListItemModal />
     <ConditionModal />
   </div>
@@ -61,10 +61,12 @@ export default {
 <style scoped>
 
 .list-wrapper{
+  margin: 0 auto;
+  width: auto;
   display: flex;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   justify-content: flex-start;
-  margin: 0 0 0 5vw;
+  overflow-x: scroll;
 }
 
 </style>
