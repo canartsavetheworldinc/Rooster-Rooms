@@ -118,7 +118,7 @@ tr.list-row {
   min-width:50px;
 }
 .sepbath{
-  min-width:50px;
+  min-width:100px;
 }
 .custom_1{
   min-width:50px;

@@ -130,7 +130,7 @@ export default {
 }
 
 .largetext{
-    font-size: calc(2rem + ((1vw - 0.64rem) * 2.1429));
+    font-size: calc(1.8rem + ((1vw - 0.64rem) * 2.1429));
 }
 
 .smalltext{
@@ -139,6 +139,38 @@ export default {
 
 .link{
   text-decoration: none;
+}
+
+@media screen and (max-width: 896px){
+  .title-wrapper h1{
+    font-size: calc(2.8rem + ((2vw - 0.64rem) * 2.1429));
+  }
+
+  .subtitle{
+      font-size: calc(2.3rem + ((1vw - 0.64rem) * 2.1429));
+  }
+
+  .description p{
+    font-size: calc(2.3rem + ((0.5vw - 0.67rem) * 2.1));
+  }
+
+  .largetext{
+    font-size: calc(1.8rem + ((1vw - 0.64rem) * 2.1429));
+}
+
+.smalltext{
+  font-size: calc(1.7rem + ((0.5vw - 0.64rem) * 2.1429));
+}
+
+#selection{
+  width: 34vw;
+}
+
+}
+@media screen and (max-width: 896px){
+    .description p{
+    font-size: calc(2rem + ((0.5vw - 0.67rem) * 2.1));
+  }
 }
 
 </style>

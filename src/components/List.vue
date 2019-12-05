@@ -50,4 +50,10 @@ table {
   border-spacing: 0;
   overflow: scroll;
 }
+
+/* @media screen and (max-width: 480px){
+  table{
+    margin: 0 5% 0 5%;
+  }
+} */
 </style>

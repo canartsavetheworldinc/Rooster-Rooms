@@ -68,4 +68,16 @@ export default {
   margin: 0;
 }
 
+@media screen and (max-width: 480px){
+  .listitems input:not([type="checkbox"]){
+  width: 40%;
+  margin: 0;
+}
+  .listitems span{
+    width: 0%;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
 </style>

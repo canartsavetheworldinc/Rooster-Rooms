@@ -69,4 +69,10 @@ export default {
   overflow-x: scroll;
 }
 
+@media screen and (max-width: 896px){
+  .list-wrapper{
+    width: 90vw;
+  }
+}
+
 </style>

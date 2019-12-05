@@ -61,4 +61,15 @@ export default {
   width: 70%;
 }
 
+@media screen and (max-width: 896px){
+  .conditionItems .column{
+    font-size: calc(1.3rem + ((0.4vw - 0.54rem)));
+}
+
+  .conditionItems .custom{
+    width: 60%;
+  }
+
+}
+
 </style>

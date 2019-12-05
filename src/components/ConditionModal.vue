@@ -34,7 +34,7 @@ export default {
   align-content: space-around;
   display: flex;
   flex-wrap: wrap;
-  font-size: 16px;
+  font-size: 18px;
   overflow-y: scroll;
 }
 
@@ -45,4 +45,5 @@ export default {
   margin-bottom: 2%;
   width: 80px;
 }
+
 </style>
