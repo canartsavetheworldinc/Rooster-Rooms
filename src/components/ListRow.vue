@@ -79,7 +79,6 @@ td {
 
 tr.list-row {
   background-color: #fdde83;
-<<<<<<< HEAD
 }
 
 .name{
@@ -127,8 +126,5 @@ tr.list-row {
 .custom_2{
   min-width:50px;
 }
-=======
-}
->>>>>>> 842f5ff133267ada043736d351aa882286b71703
 
 </style>

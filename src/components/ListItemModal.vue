@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 	<modal :adaptive="true" width="95%" :max-width="780" height="auto" name="edit-list-item">
     <div class="modal-list-item">
     <ListItemInput class="listitems name" conditionId="name" />
@@ -19,27 +18,6 @@
     <ListItemInput class="listitems custom_2" conditionId="custom_2" />
     </div>
     <button class="okey" @click="onRegister()">ok!</button>
-=======
-	<modal name="edit-list-item">
-    <div class="modal-list-item">
-    <ListItemInput conditionId="name" />
-    <ListItemInput conditionId="ward" />
-    <ListItemInput conditionId="line" />
-    <ListItemInput conditionId="station" />
-    <ListItemInput conditionId="time" />
-    <ListItemInput conditionId="old" />
-    <ListItemInput conditionId="floor" />
-    <ListItemInput conditionId="layout" />
-    <ListItemInput conditionId="size" />
-    <ListItemInput conditionId="rent" />
-    <ListItemInput conditionId="autolock" />
-    <ListItemInput conditionId="delibox" />
-    <ListItemInput conditionId="sepbath" />
-    <ListItemInput conditionId="custom_1" />
-    <ListItemInput conditionId="custom_2" />
-    </div>
-    <button @click="onRegister()">ok!</button>
->>>>>>> 842f5ff133267ada043736d351aa882286b71703
   </modal>
 </template>
 
@@ -70,23 +48,15 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 
 .modal-list-item{
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-=======
-.modal-list-item{
-  justify-content: space-around;
-  align-items: center;
-  align-content: space-around;
->>>>>>> 842f5ff133267ada043736d351aa882286b71703
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
 }
-<<<<<<< HEAD
 
 .listitems{
   width: 34%;
@@ -105,6 +75,4 @@ export default {
   border-spacing: 0;
 }
 
-=======
->>>>>>> 842f5ff133267ada043736d351aa882286b71703
 </style>

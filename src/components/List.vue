@@ -43,14 +43,9 @@ export default {
 }
 
 table {
-<<<<<<< HEAD
   margin: 0 auto;
   height: 100px;
   min-height: 100px;
-=======
-  width: auto;
-  height: 100px;
->>>>>>> 842f5ff133267ada043736d351aa882286b71703
   border-collapse: collapse;
   border-spacing: 0;
   overflow: scroll;
