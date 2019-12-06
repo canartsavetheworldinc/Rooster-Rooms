@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>{{ data }}</div>
     <div class="list-wrapper">
       <List />
     </div>
@@ -53,7 +52,22 @@ export default {
   computed: {
     formdata() {
       return this.$store.getters.getFormdata
+    },
+    token() {
+      return this.$store.getters.getToken
     }
+  },
+  watch: {
+    data() {
+      this.$store.dispatch("decodeToken", this.data)
+    },
+    token() {
+      // console.log(this.token)
+      location.hash = `#/edit/${this.token}`
+    }
+  },
+  beforeMount() {
+    this.$store.dispatch("decodeToken", this.data)
   }
 }
 </script>

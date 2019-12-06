@@ -7,9 +7,6 @@
 <script>
 export default {
   name: 'app',
-  beforeCreate() {
-    this.$store.dispatch("init")
-  },
   created() {
     this.$store.commit("clearForm")
   }

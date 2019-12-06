@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import jwt from 'jsonwebtoken'
 
 Vue.use(Vuex)
 
@@ -41,11 +42,14 @@ const defaultState = {
   }]
 }
 
+const privateKey = "rooster-rooms"
+
 export default new Vuex.Store({
   state: {
     columns: [],
     list: [],
     formdata: {},
+    token: "",
     onFormRegister() {}
   },
   getters: {
@@ -58,6 +62,9 @@ export default new Vuex.Store({
     getFormdata(state) {
       return state.formdata
     },
+    getToken(state) {
+      return state.token
+    },
     onFormRegister(state) {
       return state.onFormRegister
     }
@@ -69,7 +76,10 @@ export default new Vuex.Store({
     },
     addListItem(state, payload) {
       state.list.push(payload)
-      localStorage.setItem("list", JSON.stringify(state.list))
+      state.token = jwt.sign({
+        columns: state.columns,
+        list: state.list
+      }, privateKey)
     },
     updateListItem(state, payload) {
       if(payload.id === undefined) {
@@ -85,11 +95,17 @@ export default new Vuex.Store({
         item[column.id] = payload[column.id]
       }
       state.list.splice(itemIndex, 1, item)
-      localStorage.setItem("list", JSON.stringify(state.list))
+      state.token = jwt.sign({
+        columns: state.columns,
+        list: state.list
+      }, privateKey)
     },
     rearrangeList(state, payload) {
       state.list = payload
-      localStorage.setItem("list", JSON.stringify(state.list))
+      state.token = jwt.sign({
+        columns: state.columns,
+        list: state.list
+      }, privateKey)
     },
     setFormdata(state, payload) {
       state.formdata = { ...state.formdata }
@@ -128,7 +144,10 @@ export default new Vuex.Store({
           column.enabled = payload.enabled
         }
       }
-      localStorage.setItem("columns", JSON.stringify(state.columns))
+      state.token = jwt.sign({
+        columns: state.columns,
+        list: state.list
+      }, privateKey)
     },
     changeCustomColumnName(state, payload) {
       for(const column of state.columns) {
@@ -136,18 +155,24 @@ export default new Vuex.Store({
           column.name = payload.name
         }
       }
-      localStorage.setItem("columns", JSON.stringify(state.columns))
+      state.token = jwt.sign({
+        columns: state.columns,
+        list: state.list
+      }, privateKey)
     }
   },
   actions: {
-    init(context) {
-      const list = JSON.parse(localStorage.getItem("list"))
-      const columns = JSON.parse(localStorage.getItem("columns"))
-      // console.log(list, columns)
-      context.commit("init", {
-        list: list !== null ? list : defaultState.list,
-        columns: columns !== null ? columns : defaultState.columns
-      })
+    decodeToken(context, payload) {
+      const decoded = jwt.decode(payload, { key: privateKey })
+      // console.log(decoded)
+      if(decoded !== null) {
+        context.commit("init", decoded)
+      } else {
+        context.commit("init", {
+          list: defaultState.list,
+          columns: defaultState.columns
+        })
+      }
     },
     addListItem(context, payload) {
       context.commit("addListItem", payload)
