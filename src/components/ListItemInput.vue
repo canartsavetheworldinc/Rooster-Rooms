@@ -40,11 +40,11 @@ export default {
     inputType: {
       get() {
         switch(this.type) {
-          case String:
+          case "string":
             return "text"
-          case Number:
+          case "number":
             return "number"
-          case Boolean:
+          case "boolean":
             return "checkbox"
           default:
             return "text"

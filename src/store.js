@@ -7,21 +7,21 @@ Vue.use(Vuex)
 
 const defaultState = {
   columns: [
-    { type: String, id: "name", name: "名前", enabled: true },
-    { type: String, id: "ward", name: "市区町村", enabled: false },
-    { type: String, id: "line", name: "路線", enabled: false },
-    { type: String, id: "station", name: "最寄駅", enabled: true },
-    { type: Number, id: "time", name: "駅徒歩", enabled: false },
-    { type: Number, id: "old", name: "築年数", enabled: false },
-    { type: Number, id: "floor", name: "階数", enabled: false },
-    { type: String, id: "layout", name: "間取り", enabled: false },
-    { type: Number, id: "size", name: "広さ", enabled: false },
-    { type: Number, id: "rent", name: "家賃", enabled: true },
-    { type: Boolean, id: "autolock", name: "オートロック", enabled: false },
-    { type: Boolean, id: "delibox", name: "宅配ボックス", enabled: false },
-    { type: Boolean, id: "sepbath", name: "風呂トイレ別", enabled: true },
-    { type: String, id: "custom_1", name: "洗濯機置場", enabled: false },
-    { type: String, id: "custom_2", name: "", enabled: false }
+    { type: "string", id: "name", name: "名前", enabled: true },
+    { type: "string", id: "ward", name: "市区町村", enabled: false },
+    { type: "string", id: "line", name: "路線", enabled: false },
+    { type: "string", id: "station", name: "最寄駅", enabled: true },
+    { type: "number", id: "time", name: "駅徒歩", enabled: false },
+    { type: "number", id: "old", name: "築年数", enabled: false },
+    { type: "number", id: "floor", name: "階数", enabled: false },
+    { type: "string", id: "layout", name: "間取り", enabled: false },
+    { type: "number", id: "size", name: "広さ", enabled: false },
+    { type: "number", id: "rent", name: "家賃", enabled: true },
+    { type: "boolean", id: "autolock", name: "オートロック", enabled: false },
+    { type: "boolean", id: "delibox", name: "宅配ボックス", enabled: false },
+    { type: "boolean", id: "sepbath", name: "風呂トイレ別", enabled: true },
+    { type: "string", id: "custom_1", name: "洗濯機置場", enabled: false },
+    { type: "string", id: "custom_2", name: "", enabled: false }
   ],
   list: [{
     id: 0,
@@ -46,7 +46,6 @@ const defaultState = {
 const token = {
   sign(obj) {
     const packed = jsonpack.pack(JSON.stringify(obj))
-    // console.log("packed", packed)
     return Base64.encodeURI(packed)
   },
   decode(token) {
@@ -60,7 +59,6 @@ const token = {
     } catch(err) {
       console.error("Could not decode the token.")
     }
-    // console.log("unpacked", unpacked)
     return unpacked
   }
 }
@@ -141,13 +139,13 @@ export default new Vuex.Store({
       for(const column of state.columns) {
         let initValue
         switch(column.type) {
-          case String:
+          case "string":
             initValue = ""
             break
-          case Number:
+          case "number":
             initValue = 0
             break
-          case Boolean:
+          case "boolean":
             initValue = false
             break
           default:
@@ -185,7 +183,6 @@ export default new Vuex.Store({
   actions: {
     decodeToken(context, payload) {
       const decoded = token.decode(payload)
-      // console.log(decoded)
       if(decoded !== null) {
         context.commit("init", decoded)
       } else {
