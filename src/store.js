@@ -129,9 +129,7 @@ export default new Vuex.Store({
     setFormdata(state, payload) {
       state.formdata = { ...state.formdata }
       for(const key in payload) {
-        if(state.formdata[key] !== undefined) {
-          state.formdata[key] = payload[key]
-        }
+        state.formdata[key] = payload[key]
       }
     },
     clearForm(state) {
