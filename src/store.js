@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import jwt from 'jsonwebtoken'
+import jsonpack from 'jsonpack'
+import { Base64 } from 'js-base64'
 
 Vue.use(Vuex)
 
@@ -42,7 +43,27 @@ const defaultState = {
   }]
 }
 
-const privateKey = "rooster-rooms"
+const token = {
+  sign(obj) {
+    const packed = jsonpack.pack(JSON.stringify(obj))
+    // console.log("packed", packed)
+    return Base64.encodeURI(packed)
+  },
+  decode(token) {
+    if(!token) {
+      return null
+    }
+    const decoded = Base64.decode(token)
+    let unpacked = null
+    try {
+      unpacked = jsonpack.unpack(decoded)
+    } catch(err) {
+      console.error("Could not decode the token.")
+    }
+    // console.log("unpacked", unpacked)
+    return unpacked
+  }
+}
 
 export default new Vuex.Store({
   state: {
@@ -76,10 +97,10 @@ export default new Vuex.Store({
     },
     addListItem(state, payload) {
       state.list.push(payload)
-      state.token = jwt.sign({
+      state.token = token.sign({
         columns: state.columns,
         list: state.list
-      }, privateKey)
+      })
     },
     updateListItem(state, payload) {
       if(payload.id === undefined) {
@@ -95,17 +116,17 @@ export default new Vuex.Store({
         item[column.id] = payload[column.id]
       }
       state.list.splice(itemIndex, 1, item)
-      state.token = jwt.sign({
+      state.token = token.sign({
         columns: state.columns,
         list: state.list
-      }, privateKey)
+      })
     },
     rearrangeList(state, payload) {
       state.list = payload
-      state.token = jwt.sign({
+      state.token = token.sign({
         columns: state.columns,
         list: state.list
-      }, privateKey)
+      })
     },
     setFormdata(state, payload) {
       state.formdata = { ...state.formdata }
@@ -144,10 +165,10 @@ export default new Vuex.Store({
           column.enabled = payload.enabled
         }
       }
-      state.token = jwt.sign({
+      state.token = token.sign({
         columns: state.columns,
         list: state.list
-      }, privateKey)
+      })
     },
     changeCustomColumnName(state, payload) {
       for(const column of state.columns) {
@@ -155,15 +176,15 @@ export default new Vuex.Store({
           column.name = payload.name
         }
       }
-      state.token = jwt.sign({
+      state.token = token.sign({
         columns: state.columns,
         list: state.list
-      }, privateKey)
+      })
     }
   },
   actions: {
     decodeToken(context, payload) {
-      const decoded = jwt.decode(payload, { key: privateKey })
+      const decoded = token.decode(payload)
       // console.log(decoded)
       if(decoded !== null) {
         context.commit("init", decoded)
